@@ -1,8 +1,11 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResultsPage {
@@ -22,5 +25,15 @@ public class SearchResultsPage {
 
     public int getSearchResultsCount() {
         return searchResults.size();
+    }
+
+    public List<String> getSearchResults() {
+        List<String> searchResultsList = new ArrayList<String>();
+        for (WebElement searchResult : searchResults) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", searchResult);
+            String searchResultText = searchResult.getText();
+            searchResultsList.add(searchResultText);
+        }
+        return searchResultsList;
     }
 }

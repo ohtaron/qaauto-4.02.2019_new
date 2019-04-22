@@ -1,3 +1,5 @@
+package page;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,8 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultsPage {
-    private WebDriver driver;
+public class SearchResultsPage extends BasePage{
+
 
     @FindBy(xpath = "//li[contains(@class, 'search-result__occluded-item')]")
     private List<WebElement> searchResults;

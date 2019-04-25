@@ -28,13 +28,20 @@ public class LoginPage extends BasePage{
 
     /**
      * Constructor for LoginPage object.
-     * @param driver WebDriver instance from BaseTest
+     * @param driver WebDriver instance from BaseTest.
      */
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this); //this = page.LoginPage.class
     }
 
+    /**
+     * Login method to fill up login details and confirm transition to HomePage or LoginPage or LoginSubmitPage.
+     * @param userEmail contains login details.
+     * @param userPassword contains password details.
+     * @param <GenericPage> generic that returns data from one of the classes.
+     * @return one of the classes depending on the url contains.
+     */
     public <GenericPage> GenericPage login(String userEmail, String userPassword) {
         emailField.sendKeys(userEmail);
         passwordField.sendKeys(userPassword);
@@ -49,6 +56,12 @@ public class LoginPage extends BasePage{
         }
     }
 
+    /**
+     * recoverPassword method to fill up email and return PassRecoveryPage.
+     * @param userEmail contains email.
+     * @param <GenericPage> generic that returns data from one of the classes.
+     * @return one of the classes depending on the url contains.
+     */
     public <GenericPage> GenericPage recoverPassword (String userEmail){
         emailRecoveryField.sendKeys(userEmail);
         findAccountButton.click();
@@ -59,6 +72,10 @@ public class LoginPage extends BasePage{
         }
     }
 
+     /**
+     * Method to check if page was loaded.
+     * @return true/false if page loaded or not.
+     */
     public boolean isPageLoaded() {
         return signInButton.isDisplayed();
     }

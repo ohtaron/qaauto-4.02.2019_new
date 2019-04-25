@@ -7,8 +7,14 @@ import page.SearchResultsPage;
 
 import java.util.List;
 
+/**
+ * Test class for LinkedIn search test.
+ */
 public class SearchTest extends BaseTest{
 
+    /**
+     * Test with login variables, check if pages was loaded and count of received results.
+     */
     @Test
     public void basicSearchTest() {
         String userEmail = "ohta@i.ua";

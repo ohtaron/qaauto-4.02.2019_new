@@ -7,8 +7,15 @@ import page.HomePage;
 import page.LoginPage;
 import page.LoginSubmitPage;
 
+/**
+ * Test class for LinkedIn login test.
+ */
 public class LinkedinLoginTest extends BaseTest {
 
+    /**
+     * Method with DataProvider TestNG feature with variables to insert.
+     * @return input values.
+     */
     @DataProvider
     public Object[][] validDataProvider() {
         return new Object[][]{
@@ -18,6 +25,11 @@ public class LinkedinLoginTest extends BaseTest {
         };
     }
 
+    /**
+     * Method that assert page is loaded with correct values.
+     * @param userEmail login data.
+     * @param userPassword password data.
+     */
     @Test(dataProvider = "validDataProvider")
     public void successfulLoginTest(String userEmail, String userPassword) {
         Assert.assertTrue(loginPage.isPageLoaded(),
@@ -29,6 +41,10 @@ public class LinkedinLoginTest extends BaseTest {
                 "Home page is not loaded.");
     }
 
+    /**
+     * Method with DataProvider TestNG feature with variables to insert.
+     * @return input values.
+     */
     @DataProvider
     public Object[][] emptyValuesProvider() {
         return new Object[][]{
@@ -38,6 +54,11 @@ public class LinkedinLoginTest extends BaseTest {
         };
     }
 
+    /**
+     * Method that assert page is loaded with empty values.
+     * @param userEmail login data.
+     * @param userPassword password data.
+     */
     @Test(dataProvider = "emptyValuesProvider")
     public void negativeWithEmptyValuesTest(String userEmail, String userPassword) {
         Assert.assertTrue(loginPage.isPageLoaded(),
@@ -48,6 +69,10 @@ public class LinkedinLoginTest extends BaseTest {
         Assert.assertTrue(newLoginPage.isPageLoaded(), "Login page is not loaded.");
     }
 
+    /**
+     * Method with DataProvider TestNG feature with variables to insert.
+     * @return input values.
+     */
     @DataProvider
     public Object[][] invalidDataProvider() {
         return new Object[][]{
@@ -56,6 +81,13 @@ public class LinkedinLoginTest extends BaseTest {
         };
     }
 
+    /**
+     * Method that assert page is loaded with wrong values.
+     * @param userEmail login data.
+     * @param userPassword password data.
+     * @param expectedEmailValidation validation of correct login values.
+     * @param expectedPasswordValidation validation of correct password values.
+     */
     @Test(dataProvider = "invalidDataProvider")
     public void negativeNavigatesToLoginSubmitTest(String userEmail,
                                                    String userPassword,
